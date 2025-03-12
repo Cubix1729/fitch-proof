@@ -83,16 +83,15 @@ class FitchInterpreter:
 
                 yield f'Imported file "{imported_file_name}"\n'
 
-
                 self.imported_proofs_list.extend(file_interpreter.imported_proofs_list + file_interpreter.proofs_list)
                 self.all_proved_inferences.extend(
                     [proof.goal for proof in (file_interpreter.imported_proofs_list + file_interpreter.proofs_list)]
                 )
                 import_statements_found = True
-        
+
         if import_statements_found:
             yield "\n\n"
-            
+
         for index, proof_part in enumerate(proof_split):
             if proof_part == "":
                 continue

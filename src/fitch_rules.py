@@ -360,18 +360,6 @@ class TheoremApplication(Rule):
         return True
 
 
-"""test = TheoremApplication(
-    theorem=Inference([Expression("A v B"), Expression("~A")], Expression("B")), lines_cited=[2, 3]
-)
-
-verif = test.verify(
-    lines_cited_content=[Expression("(C & (D v G)) v (A -> B)"), Expression("~(C & (D v G))")],
-    conclusion=Expression("A -> B"),
-)
-
-print(verif)"""  # to remove
-
-
 justification_grammar = r"""
 start: justification
 LINE_NUM: INT

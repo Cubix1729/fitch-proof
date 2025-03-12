@@ -257,34 +257,3 @@ class Proof:
         result += r"\end{nd}$"
 
         return result
-
-
-"""concl = Expression("(A & B) v (A & C)")
-A_and_B = Expression("A & B")
-A_prop = Expression("A")
-A_and_C = Expression("A & C")
-
-test = Proof(Inference([concl], A_prop))
-
-test.add_premise(concl)
-
-test.add_assumption(A_and_B)
-
-test.add_line(A_prop, ConjunctionElim(2))
-test.discharge_assumption()
-
-test.add_assumption(A_and_C)
-test.add_line(A_prop, ConjunctionElim(4))
-
-test.discharge_assumption()
-
-
-test.add_line(A_prop, DisjunctionElim(1, 2, 3, 4, 5))
-
-
-print(test)
-
-print(test.latex())
-print(test.goal_accomplished())
-  # to remove
-"""
