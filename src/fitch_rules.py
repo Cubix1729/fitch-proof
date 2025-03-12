@@ -375,7 +375,7 @@ print(verif)"""  # to remove
 justification_grammar = r"""
 start: justification
 LINE_NUM: INT
-INFERENCE: /[^","]+/
+INFERENCE: /[^0-9]+/
 
 justification: "R" LINE_NUM                                      -> reiteration
              | ("vI" | "∨I" | "|I") LINE_NUM                     -> or_intro

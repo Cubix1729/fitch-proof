@@ -242,7 +242,10 @@ class Inference:
         self.conclusion = conclusion
 
     def __str__(self) -> str:
-        return f"{", ".join([str(premise) for premise in self.premises])} ⊢ {self.conclusion}"
+        if len(self.premises) != 0:
+            return f"{", ".join([str(premise) for premise in self.premises])} ⊢ {self.conclusion}"
+        else:
+            return f"⊢ {self.conclusion}"
 
     def __eq__(self, other) -> bool:
         return self.premises == other.premises and self.conclusion == other.conclusion
