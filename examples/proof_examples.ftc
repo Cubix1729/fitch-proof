@@ -1,0 +1,497 @@
+% Chapter 17, exercise C
+
+
+proof J -> ~J |- ~J
+    1. J -> ~J by Premise
+        2. J by Assumption
+        3. ~J by ->E 2, 1
+        4. False by ~E 2, 3
+    4. ~J by ~I 2-4
+
+
+proof Q -> (Q & ~Q) |- ~Q
+    1. Q -> (Q & ~Q) by Premise
+        2. Q by Assumption
+        3. Q & ~Q by ->E 2, 1
+        4. ~Q by &E 3
+        5. False by ~E 2, 4
+    6. ~Q by ~I 2-5
+
+
+proof A -> (B -> C) |- (A & B) -> C
+    1. A -> (B -> C) by Premise
+        2. A & B by Assumption
+        3. A by &E 2
+        4. B by &E 2
+        5. B -> C by ->E 3, 1
+        6. C by ->E 5, 4
+    7. (A & B) -> C by ->I 2-6
+
+
+proof K & L |- K <-> L
+    1. K & L by Premise
+        2. K by Assumption
+        3. L by &E 1
+
+        4. L by Assumption
+        5. K by &E 1
+    6. K <-> L by <->I 2-3, 4-5
+    
+
+proof (C & D) v E |- E v D
+    1. (C & D) v E by Premise
+        2. C & D by Assumption
+        3. D by &E 2
+        4. E v D by vI 3
+
+        5. E by Assumption
+        6. E v D by vI 5
+    
+    7. E v D by vE 1, 2-4, 5-6
+
+
+proof A <-> B, B <-> C |- A <-> C
+    1. A <-> B by Premise
+    2. B <-> C by Premise
+        3. A by Assumption
+        4. B by <->E 3, 1
+        5. C by <->E 4, 2
+
+        6. C by Assumption
+        7. B by <->E 6, 2
+        8. A by <->E 7, 1
+    
+    9. A <-> C by <->I 3-5, 6-8
+
+
+proof ~F -> G, F -> H |- G v H
+    1. ~F -> G by Premise
+    2. F -> H by Premise
+        3. ~(G v H) by Assumption
+            4. F by Assumption
+            5. H by ->E 4, 2
+            6. G v H by vI 5
+            7. False by ~E 6, 3
+
+            8. ~F by Assumption
+            9. G by ->E 8, 1
+            10. G v H by vI 9
+            11. False by ~E 10, 3
+
+        12. ~F by ~I 4-7
+        13. ~~F by ~I 8-11
+        14. False by ~E 12, 13
+
+    15. ~~(G v H) by ~I 3-14
+    16. G v H by DNE 15
+
+
+proof (Z & K) v (K & M), K -> D |- D
+    1. (Z & K) v (K & M) by Premise
+    2. K -> D by Premise
+        3. Z & K by Assumption
+        4. K by &E 3
+
+        5. K & M  by Assumption
+        6. K by &E 5
+    
+    7. K by vE 1, 3-4, 5-6
+    8. D by ->E 7, 2
+
+
+proof P & (Q v R), P -> ~R |- Q v E
+    1. P & (Q v R) by Premise
+    2. P -> ~R by Premise
+    3. P by &E 1
+    4. ~R by ->E 3, 2
+    5. Q v R by &E 1
+        6. Q by Assumption
+        7. Q v E by vI 6
+
+        8. R by Assumption
+            9. ~Q by Assumption
+            10. False by ~E 8, 4
+        11. ~~Q by ~I 9-10
+        12. Q by DNE 11
+        13. Q v E by vI 12
+    
+    13. Q v E by vE 5, 6-7, 8-13
+
+
+proof S <-> T |- S <-> (T v S)
+    1. S <-> T by Premise
+        2. S by Assumption
+        3. T by <->E 2, 1
+        4. T v S by vI 3
+
+        5. T v S by Assumption
+            6. T by Assumption
+            7. S by <->E 6, 1
+
+            8. S by Assumption
+            9. S by R 8
+        
+        10. S by vE 5, 6-7, 8-9
+    
+    11. S <-> (T v S) by <->I 2-4, 5-10
+
+
+proof ~(P -> Q) |- ~Q
+    1. ~(P -> Q) by Premise
+        2. Q by Assumption
+            3. P by Assumption
+            4. Q by R 2
+        5. P -> Q by ->I 3-4
+        6. False by ~E 5, 1
+    7. ~Q by ~I 2-6
+
+
+proof ~(P -> Q) |- P
+    1. ~(P -> Q) by Premise
+        2. ~P by Assumption
+            
+            3. P by Assumption
+                4. ~Q by Assumption
+                5. False by ~E 3, 2
+            6. ~~Q by ~I 4-5
+            7. Q by DNE 6
+        
+        8. P -> Q by ->I 3-7
+        9. False by ~E 8, 1
+    
+    10. ~~P by ~I 2-9
+    11. P by DNE 10
+
+
+
+% Chapter 18, exercise A
+
+
+proof A -> B, A -> C |- A -> (B & C)
+    1. A -> B by Premise
+    2. A -> C by Premise
+        3. A by Assumption
+        4. B by ->E 3, 1
+        5. C by ->E 3, 2
+        6. B & C by &I 4, 5
+    7. A -> (B & C) by ->I 3-6
+
+
+proof (A & B) -> C |- A -> (B -> C)
+    1. (A & B) -> C by Premise
+        2. A by Assumption
+            3. B by Assumption
+            4. A & B by &I 2, 3
+            5. C by ->E 4, 1
+        6. B -> C by ->I 3-5
+    7. A -> (B -> C) by ->I 2-6
+
+
+proof A -> (B -> C) |- (A -> B) -> (A -> C)
+    1. A -> (B -> C) by Premise
+        2. A -> B by Assumption
+            3. A by Assumption
+            4. B by ->E 3, 2
+            5. B -> C by ->E 3, 1
+            6. C by ->E 4, 5
+        7. A -> C by ->I 3-6
+    8. (A -> B) -> (A -> C) by ->I 2-7
+
+
+proof A v (B & C) |- (A v B) & (A v C)
+    1. A v (B & C) by Premise
+        2. A by Assumption
+        3. A v B by vI 2
+        4. A v C by vI 2
+        5. (A v B) & (A v C) by &I 3, 4
+
+        6. (B & C) by Assumption
+        7. B by &E 6
+        8. C by &E 6
+        9. A v B by vI 7
+        10. A v C by vI 8
+        11. (A v B) & (A v C) by &I 9, 10
+    
+    12. (A v B) & (A v C) by vE 1, 2-5, 6-11
+
+
+proof (A & B) v (A & C) |- A & (B v C)
+    1. (A & B) v (A & C) by Premise
+        2. A & B by Assumption
+        3. A by &E 2
+        4. B by &E 2
+        5. B v C by vI 4
+        6. A & (B v C) by &I 3, 5
+
+        7. A & C by Assumption
+        8. A by &E 7
+        9. C by &E 7
+        10. B v C by vI 9
+        11. A & (B v C) by &I 8, 10
+    
+    12. A & (B v C) by vE 1, 2-6, 7-11
+
+
+proof A v B, A -> C, B -> D |- C v D
+    1. A v B by Premise
+    2. A -> C by Premise
+    3. B -> D by Premise
+        4. A by Assumption
+        5. C by ->E 4, 2
+        6. C v D by vI 5
+    
+        7. B by Assumption
+        8. D by ->E 7, 3
+        9. C v D by vI 8
+    
+    10. C v D by vE 1, 4-6, 7-9
+
+
+proof ~A v ~B |- ~(A & B)
+    1. ~A v ~B by Premise
+        2. ~A by Assumption
+            3. A & B by Assumption
+            4. A by &E 3
+            5. False by ~E 4, 2
+        6. ~(A & B) by ~I 3-5
+
+        7. ~B by Assumption
+            8. A & B by Assumption
+            9. B by &E 8
+            10. False by ~E 9, 7
+        11. ~(A & B) by ~I 8-10
+    
+    12. ~(A & B) by vE 1, 2-6, 7-11
+
+
+proof A & ~B |- ~(A -> B)
+    1. A & ~B by Premise
+    2. A by &E 1
+    3. ~B by &E 1
+        4. A -> B by Assumption
+        5. B by ->E 2, 4
+        6. False by ~E 5, 3
+    7. ~(A -> B) by ~I 4-6
+
+
+
+% Chapter 18, exercise C
+
+
+proof |- ~A -> (A -> False)
+        1. ~A by Assumption
+            2. A by Assumption
+            3. False by ~E 2, 1
+        4. A -> False by ->I 2-3
+    5. ~A -> (A -> False) by ->I 1-4
+
+
+proof |- ~(A & ~A)
+        1. A & ~A by Assumption
+        2. A by &E 1
+        3. ~A by &E 1
+        4. False by ~E 2, 3
+    5. ~(A & ~A) by ~I 1-4
+
+
+proof |- ((A -> C) & (B -> C)) -> ((A v B) -> C)
+        1. (A -> C) & (B -> C) by Assumption
+            2. A v B by Assumption
+                3. A by Assumption
+                4. A -> C by &E 1
+                5. C by ->E 3, 4
+
+                6. B by Assumption
+                7. B -> C by &E 1
+                8. C by ->E 6, 7
+            
+            9. C by vE 2, 3-5, 6-8
+        10. (A v B) -> C by ->I 2-9
+    
+    11. ((A -> C) & (B -> C)) -> ((A v B) -> C) by ->I 1-10
+
+
+proof |- ~(A -> B) -> (A & ~B)
+        1. ~(A -> B) by Assumption
+            2. ~(A & ~B) by Assumption
+                3. B by Assumption
+                    4. A by Assumption
+                    5. B by R 3
+                6. A -> B by ->I 4-5
+                7. False by ~E 6, 1
+            8. ~B by ~I 3-7
+                9. ~A by Assumption
+                    10. A by Assumption
+                        11. ~B by Assumption
+                        12. False by ~E 10, 9
+                    13. ~~B by ~I 11-12
+                    14. B by DNE 13
+                15. A -> B by ->I 10-14
+                16. False by ~E 15, 1
+            17. ~~A by ~I 9-16
+            18. A by DNE 17
+            19. A & ~B by &I 18, 8
+            20. False by ~E 19, 2
+        21. ~~(A & ~B) by ~I 2-20
+        22. A & ~B by DNE 21
+    23. ~(A -> B) -> (A & ~B) by ->I 1-22
+
+
+proof |- (~A v B) -> (A -> B)
+        1. ~A v B by Assumption
+            2. ~A by Assumption
+                3. A by Assumption
+                    4. ~B by Assumption
+                    5. False by ~E 3, 2
+                6. ~~B by ~I 4-5
+                7. B by DNE 6
+            8. A -> B by ->I 3-7
+
+            9. B by Assumption
+                10. A by Assumption
+                11. B by R 9
+            12. A -> B by ->I 10-11
+        
+        13. A -> B by vE 1, 2-8, 9-12
+    14. (~A v B) -> (A -> B) by ->I 1-13
+
+
+
+% Chapter 18, exercise D
+
+
+proof |- ~~A -> A
+        1. ~~A by Assumption
+        2. A by DNE 1
+    3. ~~A -> A by ->I 1-2
+
+
+proof ~A -> ~B |- B -> A
+    1. ~A -> ~B by Premise
+        2. B by Assumption
+            3. ~A by Assumption
+            4. ~B by ->E 3, 1
+            5. False by ~E 2, 4
+        6. ~~A by ~I 3-5
+        7. A by DNE 6
+    8. B -> A by ->I 2-7
+
+
+proof A -> B |- ~A v B
+    1. A -> B by Premise
+        2. ~(~A v B) by Assumption
+            3. ~A by Assumption
+            4. ~A v B by vI 3
+            5. False by ~E 4, 2
+        6. ~~A by ~I 3-5
+        7. A by DNE 6
+        8. B by ->E 7, 1
+        9. ~A v B by vI 8
+        10. False by ~E 9, 2
+    11. ~~(~A v B) by ~I 2-10
+    12. ~A v B by DNE 11
+
+
+proof |- ~(A & B) -> (~A v ~B)
+        1. ~(A & B) by Assumption
+            2. ~(~A v ~B) by Assumption
+                3. ~A by Assumption
+                4. ~A v ~B by vI 3
+                5. False by ~E 4, 2
+
+                6. ~B by Assumption
+                7. ~A v ~B by vI 6
+                8. False by ~E 7, 2
+            
+            9. ~~A by ~I 3-5
+            10. A by DNE 9
+            11. ~~B by ~I 6-8
+            12. B by DNE 11
+            13. A & B by &I 10, 12
+            14. False by ~E 13, 1
+        15. ~~(~A v ~B) by ~I 2-14
+        16. ~A v ~B by DNE 15
+    17. ~(A & B) -> (~A v ~B) by ->I 1-16
+
+
+proof A -> (B v C) |- (A -> B) v (A -> C)
+    1. A -> (B v C) by Premise
+        2. ~((A -> B) v (A -> C)) by Assumption
+            3. A by Assumption
+            4. B v C by ->E 3, 1
+                5. B by Assumption
+                    6. A by Assumption
+                    7. B by R 5
+                8. A -> B by ->I 6-7
+                9. (A -> B) v (A -> C) by vI 8
+                
+                10. C by Assumption
+                    11. A by Assumption
+                    12. C by R 10
+                13. A -> C by ->I 11-12
+                14. (A -> B) v (A -> C) by vI 13
+            
+            15. (A -> B) v (A -> C) by vE 4, 5-9, 10-14
+            16. False by ~E 15, 2
+        
+        17. ~A by ~I 3-16
+
+            18. ~A by Assumption
+                19. A by Assumption
+                    20. ~B by Assumption
+                    21. False by ~E 19, 18
+                22. ~~B by ~I 20-21
+                23. B by DNE 22
+            24. A -> B by ->I 19-23
+            25. (A -> B) v (A -> C) by vI 24
+            26. False by ~E 25, 2
+        
+        27. ~~A by ~I 18-26
+
+        28. False by ~E 17, 27
+    
+    29. ~~((A -> B) v (A -> C)) by ~I 2-28
+    30. (A -> B) v (A -> C) by DNE 29
+
+
+proof |- (A -> B) v (B -> A)
+        1. ~((A -> B) v (B -> A)) by Assumption
+            2. A by Assumption
+                3. B by Assumption
+                4. A by R 2
+            5. B -> A by ->I 3-4
+            6. (A -> B) v (B -> A) by vI 5
+            7. False by ~E 6, 1
+
+            8. ~A by Assumption
+                9. A by Assumption
+                    10. ~B by Assumption
+                    11. False by ~E 9, 8
+                12. ~~B by ~I 10-11
+                13. B by DNE 12
+            14. A -> B by ->I 9-13
+            15. (A -> B) v (B -> A) by vI 14
+            16. False by ~E 15, 1
+        
+        17. ~A by ~I 2-7
+        18. ~~A by ~I 8-16
+        19. False by ~E 17, 18
+    
+    20. ~~((A -> B) v (B -> A)) by ~I 1-19
+    21. (A -> B) v (B -> A) by DNE 20
+
+
+proof |- ((A -> B) -> A) -> A
+        1. (A -> B) -> A by Assumption
+            2. ~A by Assumption
+                3. A by Assumption
+                    4. ~B by Assumption
+                    5. False by ~E 3, 2
+                6. ~~B by ~I 4-5
+                7. B by DNE 6
+            8. A -> B by ->I 3-7
+            9. A by ->E 8, 1
+            10. False by ~E 9, 2
+        11. ~~A by ~I 2-10
+        12. A by DNE 11
+    13. ((A -> B) -> A) -> A by ->I 1-12

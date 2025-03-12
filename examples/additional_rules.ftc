@@ -1,0 +1,145 @@
+% Disjunctive syllogism
+proof A v B, ~A |- B
+    1. A v B by Premise
+    2. ~A by Premise
+        3. A by Assumption
+        4. ~A by R 2
+            5. ~B by Assumption
+            6. False by ~E 3, 4
+        7. ~~B by ~I 5-6
+        8. B by DNE 7
+
+        9. B by Assumption
+        10. B by R 9
+    
+    11. B by vE 1, 3-8, 9-10
+
+
+% Modus Tollens
+proof A -> B, ~B |- ~A
+    1. A -> B by Premise
+    2. ~B by Premise
+        3. A by Assumption
+        4. B by ->E 1, 3
+        5. ~B by R 2
+        6. False by ~E 4, 5
+    7. ~A by ~I 3-6
+
+
+% Law of excluded middle
+proof |- A v ~A
+        1. ~(A v ~A) by Assumption
+            2. A by Assumption
+            3. A v ~A by vI 2
+            4. False by ~E 1, 3
+        5. ~A by ~I 2-4
+        6. A v ~A by vI 5
+        7. False by ~E 1, 6
+    8. ~~(A v ~A) by ~I 1-7
+    9. (A v ~A) by DNE 8
+
+
+% De Morgan's law #1
+proof ~(A & B) |- ~A v ~B
+    1. ~(A & B) by Premise
+        2. ~(~A v ~B) by Assumption
+            3. ~A by Assumption
+            4. ~A v ~B by vI 3
+            5. False by ~E 4, 2
+
+            6. ~B by Assumption
+            7. ~A v ~B by vI 6
+            8. False by ~E 7, 2
+        
+        9. ~~A by ~I 3-5
+        10. A by DNE 9
+        11. ~~B by ~I 6-8
+        12. B by DNE 11
+        13. A & B by &I 10, 12
+        14. False by ~E 13, 1
+    
+    15. ~~(~A v ~B) by ~I 2-14
+    16. ~A v ~B by DNE 15
+
+
+% De Morgan's law #2
+proof ~A v ~B |- ~(A & B)
+    1. ~A v ~B by Premise
+        2. A & B by Assumption
+        3. A by &E 2
+        4. B by &E 2
+            5. ~A by Assumption
+            6. False by ~E 3, 5
+
+            7. ~B by Assumption
+            8. False by ~E 4, 7
+        9. False by vE 1, 5-6, 7-8
+    10. ~(A & B) by ~I 2-9
+
+
+% De Morgan's law #3
+proof ~(A v B) |- ~A & ~B
+    1. ~(A v B) by Premise
+        2. ~(~A & ~B) by Assumption
+            3. A by Assumption
+            4. A v B by vI 3
+            5. False by ~E 4, 1
+
+            6. B by Assumption
+            7. A v B by vI 6
+            8. False by ~E 7, 1
+        
+        9. ~A by ~I 3-5
+        10. ~B by ~I 6-8
+        11. ~A & ~B by &I 9, 10
+        12. False by ~E 11, 2
+    
+    13. ~~(~A & ~B) by ~I 2-12
+    14. ~A & ~B by DNE 13
+
+
+% De Morgan's law #4
+proof ~A & ~B |- ~(A v B)
+    1. ~A & ~B by Premise
+    2. ~A by &E 1
+    3. ~B by &E 1
+        4. A v B by Assumption
+            5. A by Assumption
+            6. False by ~E 5, 2
+
+            7. B by Assumption
+            8. False by ~E 7, 3
+        
+        9. False by vE 4, 5-6, 7-8
+    
+    10. ~(A v B) by ~I 4-9
+
+
+% Double negation introduction
+proof A |- ~~A
+    1. A by Premise
+        2. ~A by Assumption
+        3. False by ~E 1, 2
+    4. ~~A by ~I 2-3
+
+
+% Explosion principle
+proof False |- A
+    1. False by Premise
+        2. ~A by Assumption
+        3. False by R 1
+    4. ~~A by ~I 2-3
+    5. A by DNE 4
+
+
+% Another form of biconditional introduction
+proof A -> B, B -> A |- A <-> B
+    1. A -> B by Premise
+    2. B -> A by Premise
+        3. A by Assumption
+        4. B by ->E 3, 1
+
+        5. B by Assumption
+        6. A by ->E 5, 2
+    
+    7. A <-> B by <->I 3-4, 5-6
