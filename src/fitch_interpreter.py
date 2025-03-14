@@ -2,6 +2,7 @@ from fitch_proof import *
 from expressions import *
 from fitch_rules import *
 from typing import Generator
+from pathlib import Path
 import re
 
 
@@ -54,6 +55,9 @@ class FitchInterpreter:
         with open(self.file_name, "r") as file:
             file_content = file.read()
 
+        file_directory = Path(self.file_name).parent
+        print(file_directory)
+
         file_content = remove_comments(file_content)
         proof_split = re.split(f"({PROOF_KEYWORD}.*?)", file_content, flags=re.DOTALL)
         import_statements_found = False
@@ -72,12 +76,12 @@ class FitchInterpreter:
 
                 imported_file_name = line[len(IMPORT_KEYWORD) :].strip()
                 try:
-                    open(imported_file_name, "r")
+                    open(Path((file_directory / imported_file_name).resolve()), "r")
 
                 except FileNotFoundError:
                     raise FitchError("imported file doesn't exist", self.file_name, self.current_line_number)
 
-                file_interpreter = FitchInterpreter(imported_file_name)
+                file_interpreter = FitchInterpreter((file_directory / imported_file_name).resolve())
                 for _ in file_interpreter.interpret_code():  # we don't display the imported proofs
                     pass
 
@@ -90,7 +94,7 @@ class FitchInterpreter:
                 import_statements_found = True
 
         if import_statements_found:
-            yield "\n\n"
+            yield "\n"
 
         for index, proof_part in enumerate(proof_split):
             if proof_part == "":

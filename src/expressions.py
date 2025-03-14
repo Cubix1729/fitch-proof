@@ -175,17 +175,17 @@ class Expression:
     grammar = r"""
 start: formula
 PROP: UCASE_LETTER
-TOP: "⊤" | "true" | "True" | "TRUE"
-BOTTOM: "⊥" | "false" | "False" | "FALSE"
+TOP: "⊤" | "true" | "True"
+BOTTOM: "⊥" | "false" | "False"
 
 formula: PROP                              -> proposition
        | TOP                               -> top
        | BOTTOM                            -> bottom
        | formula ("→" | "->") formula      -> implies
        | formula ("↔" | "<->") formula     -> iff
-       | formula ("∨" | "v" | "|") formula -> or
+       | formula ("∨" | "v") formula       -> or
        | formula ("&" | "∧") formula       -> and
-       | ("~" | "¬") formula         -> not
+       | ("~" | "¬") formula               -> not
        | "(" formula ")"
 
 %import common.UCASE_LETTER
