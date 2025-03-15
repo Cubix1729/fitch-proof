@@ -79,3 +79,4 @@ More examples can be found in the examples folder:
  - [additional_rules.ftc](../examples/additional_rules.ftc): a collection of additional rules that can be imported and used for proofs
  - [proof_examples.ftc](../examples/proof_examples.ftc): a file containing over 30 example proofs. 
  They are my solutions to most of the Fitch-style proof exercises in the [Forall x: Calgary](https://forallx.openlogicproject.org/) textbook on formal logic.
+ The output generated from the file can be found in the [output](../examples/output/) folder of the examples directory.

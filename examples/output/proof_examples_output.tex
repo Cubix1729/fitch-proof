@@ -1,0 +1,627 @@
+\documentclass{article}
+\usepackage{fitch}
+\renewcommand*\contentsname{Proof list}
+
+\begin{document}
+\tableofcontents
+\section{$J \to \neg J \vdash \neg J$}
+ $\begin{nd}
+\hypo {1} {J \to \neg J} \by{Premise}{}
+\open
+\hypo {2} {J} \by{Assumption}{}
+\have {3} {\neg J} \by{$\to$E}{2, 1}
+\have {4} {\bot} \ne{2, 3}
+\close
+\have {5} {\neg J} \ni{2-4}
+\end{nd}$
+\section{$Q \to (Q \land \neg Q) \vdash \neg Q$}
+ $\begin{nd}
+\hypo {1} {Q \to (Q \land \neg Q)} \by{Premise}{}
+\open
+\hypo {2} {Q} \by{Assumption}{}
+\have {3} {Q \land \neg Q} \by{$\to$E}{2, 1}
+\have {4} {\neg Q} \ae{3}
+\have {5} {\bot} \ne{2, 4}
+\close
+\have {6} {\neg Q} \ni{2-5}
+\end{nd}$
+\section{$A \to (B \to C) \vdash (A \land B) \to C$}
+ $\begin{nd}
+\hypo {1} {A \to (B \to C)} \by{Premise}{}
+\open
+\hypo {2} {A \land B} \by{Assumption}{}
+\have {3} {A} \ae{2}
+\have {4} {B} \ae{2}
+\have {5} {B \to C} \by{$\to$E}{3, 1}
+\have {6} {C} \by{$\to$E}{5, 4}
+\close
+\have {7} {(A \land B) \to C} \by{$\to$I}{2-6}
+\end{nd}$
+\section{$K \land L \vdash K \leftrightarrow L$}
+ $\begin{nd}
+\hypo {1} {K \land L} \by{Premise}{}
+\open
+\hypo {2} {K} \by{Assumption}{}
+\have {3} {L} \ae{1}
+\close
+\open
+\hypo {4} {L} \by{Assumption}{}
+\have {5} {K} \ae{1}
+\close
+\have {6} {K \leftrightarrow L} \by{$\leftrightarrow$I}{2-3, 4-5}
+\end{nd}$
+\section{$(C \land D) \lor E \vdash E \lor D$}
+ $\begin{nd}
+\hypo {1} {(C \land D) \lor E} \by{Premise}{}
+\open
+\hypo {2} {C \land D} \by{Assumption}{}
+\have {3} {D} \ae{2}
+\have {4} {E \lor D} \oi{3}
+\close
+\open
+\hypo {5} {E} \by{Assumption}{}
+\have {6} {E \lor D} \oi{5}
+\close
+\have {7} {E \lor D} \oe{1, 2-4, 5-6}
+\end{nd}$
+\section{$A \leftrightarrow B, B \leftrightarrow C \vdash A \leftrightarrow C$}
+ $\begin{nd}
+\hypo {1} {A \leftrightarrow B} \by{Premise}{}
+\hypo {2} {B \leftrightarrow C} \by{Premise}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\have {4} {B} \by{$\leftrightarrow$E}{3, 1}
+\have {5} {C} \by{$\leftrightarrow$E}{4, 2}
+\close
+\open
+\hypo {6} {C} \by{Assumption}{}
+\have {7} {B} \by{$\leftrightarrow$E}{6, 2}
+\have {8} {A} \by{$\leftrightarrow$E}{7, 1}
+\close
+\have {9} {A \leftrightarrow C} \by{$\leftrightarrow$I}{3-5, 6-8}
+\end{nd}$
+\section{$\neg F \to G, F \to H \vdash G \lor H$}
+ $\begin{nd}
+\hypo {1} {\neg F \to G} \by{Premise}{}
+\hypo {2} {F \to H} \by{Premise}{}
+\open
+\hypo {3} {\neg (G \lor H)} \by{Assumption}{}
+\open
+\hypo {4} {F} \by{Assumption}{}
+\have {5} {H} \by{$\to$E}{4, 2}
+\have {6} {G \lor H} \oi{5}
+\have {7} {\bot} \ne{6, 3}
+\close
+\open
+\hypo {8} {\neg F} \by{Assumption}{}
+\have {9} {G} \by{$\to$E}{8, 1}
+\have {10} {G \lor H} \oi{9}
+\have {11} {\bot} \ne{10, 3}
+\close
+\have {12} {\neg F} \ni{4-7}
+\have {13} {\neg \neg F} \ni{8-11}
+\have {14} {\bot} \ne{12, 13}
+\close
+\have {15} {\neg \neg (G \lor H)} \ni{3-14}
+\have {16} {G \lor H} \nne{15}
+\end{nd}$
+\section{$(Z \land K) \lor (K \land M), K \to D \vdash D$}
+ $\begin{nd}
+\hypo {1} {(Z \land K) \lor (K \land M)} \by{Premise}{}
+\hypo {2} {K \to D} \by{Premise}{}
+\open
+\hypo {3} {Z \land K} \by{Assumption}{}
+\have {4} {K} \ae{3}
+\close
+\open
+\hypo {5} {K \land M} \by{Assumption}{}
+\have {6} {K} \ae{5}
+\close
+\have {7} {K} \oe{1, 3-4, 5-6}
+\have {8} {D} \by{$\to$E}{7, 2}
+\end{nd}$
+\section{$P \land (Q \lor R), P \to \neg R \vdash Q \lor E$}
+ $\begin{nd}
+\hypo {1} {P \land (Q \lor R)} \by{Premise}{}
+\hypo {2} {P \to \neg R} \by{Premise}{}
+\have {3} {P} \ae{1}
+\have {4} {\neg R} \by{$\to$E}{3, 2}
+\have {5} {Q \lor R} \ae{1}
+\open
+\hypo {6} {Q} \by{Assumption}{}
+\have {7} {Q \lor E} \oi{6}
+\close
+\open
+\hypo {8} {R} \by{Assumption}{}
+\open
+\hypo {9} {\neg Q} \by{Assumption}{}
+\have {10} {\bot} \ne{8, 4}
+\close
+\have {11} {\neg \neg Q} \ni{9-10}
+\have {12} {Q} \nne{11}
+\have {13} {Q \lor E} \oi{12}
+\close
+\have {14} {Q \lor E} \oe{5, 6-7, 8-13}
+\end{nd}$
+\section{$S \leftrightarrow T \vdash S \leftrightarrow (T \lor S)$}
+ $\begin{nd}
+\hypo {1} {S \leftrightarrow T} \by{Premise}{}
+\open
+\hypo {2} {S} \by{Assumption}{}
+\have {3} {T} \by{$\leftrightarrow$E}{2, 1}
+\have {4} {T \lor S} \oi{3}
+\close
+\open
+\hypo {5} {T \lor S} \by{Assumption}{}
+\open
+\hypo {6} {T} \by{Assumption}{}
+\have {7} {S} \by{$\leftrightarrow$E}{6, 1}
+\close
+\open
+\hypo {8} {S} \by{Assumption}{}
+\have {9} {S} \r{8}
+\close
+\have {10} {S} \oe{5, 6-7, 8-9}
+\close
+\have {11} {S \leftrightarrow (T \lor S)} \by{$\leftrightarrow$I}{2-4, 5-10}
+\end{nd}$
+\section{$\neg (P \to Q) \vdash \neg Q$}
+ $\begin{nd}
+\hypo {1} {\neg (P \to Q)} \by{Premise}{}
+\open
+\hypo {2} {Q} \by{Assumption}{}
+\open
+\hypo {3} {P} \by{Assumption}{}
+\have {4} {Q} \r{2}
+\close
+\have {5} {P \to Q} \by{$\to$I}{3-4}
+\have {6} {\bot} \ne{5, 1}
+\close
+\have {7} {\neg Q} \ni{2-6}
+\end{nd}$
+\section{$\neg (P \to Q) \vdash P$}
+ $\begin{nd}
+\hypo {1} {\neg (P \to Q)} \by{Premise}{}
+\open
+\hypo {2} {\neg P} \by{Assumption}{}
+\open
+\hypo {3} {P} \by{Assumption}{}
+\open
+\hypo {4} {\neg Q} \by{Assumption}{}
+\have {5} {\bot} \ne{3, 2}
+\close
+\have {6} {\neg \neg Q} \ni{4-5}
+\have {7} {Q} \nne{6}
+\close
+\have {8} {P \to Q} \by{$\to$I}{3-7}
+\have {9} {\bot} \ne{8, 1}
+\close
+\have {10} {\neg \neg P} \ni{2-9}
+\have {11} {P} \nne{10}
+\end{nd}$
+\section{$A \to B, A \to C \vdash A \to (B \land C)$}
+ $\begin{nd}
+\hypo {1} {A \to B} \by{Premise}{}
+\hypo {2} {A \to C} \by{Premise}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\have {4} {B} \by{$\to$E}{3, 1}
+\have {5} {C} \by{$\to$E}{3, 2}
+\have {6} {B \land C} \ai{4, 5}
+\close
+\have {7} {A \to (B \land C)} \by{$\to$I}{3-6}
+\end{nd}$
+\section{$(A \land B) \to C \vdash A \to (B \to C)$}
+ $\begin{nd}
+\hypo {1} {(A \land B) \to C} \by{Premise}{}
+\open
+\hypo {2} {A} \by{Assumption}{}
+\open
+\hypo {3} {B} \by{Assumption}{}
+\have {4} {A \land B} \ai{2, 3}
+\have {5} {C} \by{$\to$E}{4, 1}
+\close
+\have {6} {B \to C} \by{$\to$I}{3-5}
+\close
+\have {7} {A \to (B \to C)} \by{$\to$I}{2-6}
+\end{nd}$
+\section{$A \to (B \to C) \vdash (A \to B) \to (A \to C)$}
+ $\begin{nd}
+\hypo {1} {A \to (B \to C)} \by{Premise}{}
+\open
+\hypo {2} {A \to B} \by{Assumption}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\have {4} {B} \by{$\to$E}{3, 2}
+\have {5} {B \to C} \by{$\to$E}{3, 1}
+\have {6} {C} \by{$\to$E}{4, 5}
+\close
+\have {7} {A \to C} \by{$\to$I}{3-6}
+\close
+\have {8} {(A \to B) \to (A \to C)} \by{$\to$I}{2-7}
+\end{nd}$
+\section{$A \lor (B \land C) \vdash (A \lor B) \land (A \lor C)$}
+ $\begin{nd}
+\hypo {1} {A \lor (B \land C)} \by{Premise}{}
+\open
+\hypo {2} {A} \by{Assumption}{}
+\have {3} {A \lor B} \oi{2}
+\have {4} {A \lor C} \oi{2}
+\have {5} {(A \lor B) \land (A \lor C)} \ai{3, 4}
+\close
+\open
+\hypo {6} {B \land C} \by{Assumption}{}
+\have {7} {B} \ae{6}
+\have {8} {C} \ae{6}
+\have {9} {A \lor B} \oi{7}
+\have {10} {A \lor C} \oi{8}
+\have {11} {(A \lor B) \land (A \lor C)} \ai{9, 10}
+\close
+\have {12} {(A \lor B) \land (A \lor C)} \oe{1, 2-5, 6-11}
+\end{nd}$
+\section{$(A \land B) \lor (A \land C) \vdash A \land (B \lor C)$}
+ $\begin{nd}
+\hypo {1} {(A \land B) \lor (A \land C)} \by{Premise}{}
+\open
+\hypo {2} {A \land B} \by{Assumption}{}
+\have {3} {A} \ae{2}
+\have {4} {B} \ae{2}
+\have {5} {B \lor C} \oi{4}
+\have {6} {A \land (B \lor C)} \ai{3, 5}
+\close
+\open
+\hypo {7} {A \land C} \by{Assumption}{}
+\have {8} {A} \ae{7}
+\have {9} {C} \ae{7}
+\have {10} {B \lor C} \oi{9}
+\have {11} {A \land (B \lor C)} \ai{8, 10}
+\close
+\have {12} {A \land (B \lor C)} \oe{1, 2-6, 7-11}
+\end{nd}$
+\section{$A \lor B, A \to C, B \to D \vdash C \lor D$}
+ $\begin{nd}
+\hypo {1} {A \lor B} \by{Premise}{}
+\hypo {2} {A \to C} \by{Premise}{}
+\hypo {3} {B \to D} \by{Premise}{}
+\open
+\hypo {4} {A} \by{Assumption}{}
+\have {5} {C} \by{$\to$E}{4, 2}
+\have {6} {C \lor D} \oi{5}
+\close
+\open
+\hypo {7} {B} \by{Assumption}{}
+\have {8} {D} \by{$\to$E}{7, 3}
+\have {9} {C \lor D} \oi{8}
+\close
+\have {10} {C \lor D} \oe{1, 4-6, 7-9}
+\end{nd}$
+\section{$\neg A \lor \neg B \vdash \neg (A \land B)$}
+ $\begin{nd}
+\hypo {1} {\neg A \lor \neg B} \by{Premise}{}
+\open
+\hypo {2} {\neg A} \by{Assumption}{}
+\open
+\hypo {3} {A \land B} \by{Assumption}{}
+\have {4} {A} \ae{3}
+\have {5} {\bot} \ne{4, 2}
+\close
+\have {6} {\neg (A \land B)} \ni{3-5}
+\close
+\open
+\hypo {7} {\neg B} \by{Assumption}{}
+\open
+\hypo {8} {A \land B} \by{Assumption}{}
+\have {9} {B} \ae{8}
+\have {10} {\bot} \ne{9, 7}
+\close
+\have {11} {\neg (A \land B)} \ni{8-10}
+\close
+\have {12} {\neg (A \land B)} \oe{1, 2-6, 7-11}
+\end{nd}$
+\section{$A \land \neg B \vdash \neg (A \to B)$}
+ $\begin{nd}
+\hypo {1} {A \land \neg B} \by{Premise}{}
+\have {2} {A} \ae{1}
+\have {3} {\neg B} \ae{1}
+\open
+\hypo {4} {A \to B} \by{Assumption}{}
+\have {5} {B} \by{$\to$E}{2, 4}
+\have {6} {\bot} \ne{5, 3}
+\close
+\have {7} {\neg (A \to B)} \ni{4-6}
+\end{nd}$
+\section{$ \vdash \neg A \to (A \to \bot)$}
+ $\begin{nd}
+\open
+\hypo {1} {\neg A} \by{Assumption}{}
+\open
+\hypo {2} {A} \by{Assumption}{}
+\have {3} {\bot} \ne{2, 1}
+\close
+\have {4} {A \to \bot} \by{$\to$I}{2-3}
+\close
+\have {5} {\neg A \to (A \to \bot)} \by{$\to$I}{1-4}
+\end{nd}$
+\section{$ \vdash \neg (A \land \neg A)$}
+ $\begin{nd}
+\open
+\hypo {1} {A \land \neg A} \by{Assumption}{}
+\have {2} {A} \ae{1}
+\have {3} {\neg A} \ae{1}
+\have {4} {\bot} \ne{2, 3}
+\close
+\have {5} {\neg (A \land \neg A)} \ni{1-4}
+\end{nd}$
+\section{$ \vdash ((A \to C) \land (B \to C)) \to ((A \lor B) \to C)$}
+ $\begin{nd}
+\open
+\hypo {1} {(A \to C) \land (B \to C)} \by{Assumption}{}
+\open
+\hypo {2} {A \lor B} \by{Assumption}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\have {4} {A \to C} \ae{1}
+\have {5} {C} \by{$\to$E}{3, 4}
+\close
+\open
+\hypo {6} {B} \by{Assumption}{}
+\have {7} {B \to C} \ae{1}
+\have {8} {C} \by{$\to$E}{6, 7}
+\close
+\have {9} {C} \oe{2, 3-5, 6-8}
+\close
+\have {10} {(A \lor B) \to C} \by{$\to$I}{2-9}
+\close
+\have {11} {((A \to C) \land (B \to C)) \to ((A \lor B) \to C)} \by{$\to$I}{1-10}
+\end{nd}$
+\section{$ \vdash \neg (A \to B) \to (A \land \neg B)$}
+ $\begin{nd}
+\open
+\hypo {1} {\neg (A \to B)} \by{Assumption}{}
+\open
+\hypo {2} {\neg (A \land \neg B)} \by{Assumption}{}
+\open
+\hypo {3} {B} \by{Assumption}{}
+\open
+\hypo {4} {A} \by{Assumption}{}
+\have {5} {B} \r{3}
+\close
+\have {6} {A \to B} \by{$\to$I}{4-5}
+\have {7} {\bot} \ne{6, 1}
+\close
+\have {8} {\neg B} \ni{3-7}
+\open
+\hypo {9} {\neg A} \by{Assumption}{}
+\open
+\hypo {10} {A} \by{Assumption}{}
+\open
+\hypo {11} {\neg B} \by{Assumption}{}
+\have {12} {\bot} \ne{10, 9}
+\close
+\have {13} {\neg \neg B} \ni{11-12}
+\have {14} {B} \nne{13}
+\close
+\have {15} {A \to B} \by{$\to$I}{10-14}
+\have {16} {\bot} \ne{15, 1}
+\close
+\have {17} {\neg \neg A} \ni{9-16}
+\have {18} {A} \nne{17}
+\have {19} {A \land \neg B} \ai{18, 8}
+\have {20} {\bot} \ne{19, 2}
+\close
+\have {21} {\neg \neg (A \land \neg B)} \ni{2-20}
+\have {22} {A \land \neg B} \nne{21}
+\close
+\have {23} {\neg (A \to B) \to (A \land \neg B)} \by{$\to$I}{1-22}
+\end{nd}$
+\section{$ \vdash (\neg A \lor B) \to (A \to B)$}
+ $\begin{nd}
+\open
+\hypo {1} {\neg A \lor B} \by{Assumption}{}
+\open
+\hypo {2} {\neg A} \by{Assumption}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\open
+\hypo {4} {\neg B} \by{Assumption}{}
+\have {5} {\bot} \ne{3, 2}
+\close
+\have {6} {\neg \neg B} \ni{4-5}
+\have {7} {B} \nne{6}
+\close
+\have {8} {A \to B} \by{$\to$I}{3-7}
+\close
+\open
+\hypo {9} {B} \by{Assumption}{}
+\open
+\hypo {10} {A} \by{Assumption}{}
+\have {11} {B} \r{9}
+\close
+\have {12} {A \to B} \by{$\to$I}{10-11}
+\close
+\have {13} {A \to B} \oe{1, 2-8, 9-12}
+\close
+\have {14} {(\neg A \lor B) \to (A \to B)} \by{$\to$I}{1-13}
+\end{nd}$
+\section{$ \vdash \neg \neg A \to A$}
+ $\begin{nd}
+\open
+\hypo {1} {\neg \neg A} \by{Assumption}{}
+\have {2} {A} \nne{1}
+\close
+\have {3} {\neg \neg A \to A} \by{$\to$I}{1-2}
+\end{nd}$
+\section{$\neg A \to \neg B \vdash B \to A$}
+ $\begin{nd}
+\hypo {1} {\neg A \to \neg B} \by{Premise}{}
+\open
+\hypo {2} {B} \by{Assumption}{}
+\open
+\hypo {3} {\neg A} \by{Assumption}{}
+\have {4} {\neg B} \by{$\to$E}{3, 1}
+\have {5} {\bot} \ne{2, 4}
+\close
+\have {6} {\neg \neg A} \ni{3-5}
+\have {7} {A} \nne{6}
+\close
+\have {8} {B \to A} \by{$\to$I}{2-7}
+\end{nd}$
+\section{$A \to B \vdash \neg A \lor B$}
+ $\begin{nd}
+\hypo {1} {A \to B} \by{Premise}{}
+\open
+\hypo {2} {\neg (\neg A \lor B)} \by{Assumption}{}
+\open
+\hypo {3} {\neg A} \by{Assumption}{}
+\have {4} {\neg A \lor B} \oi{3}
+\have {5} {\bot} \ne{4, 2}
+\close
+\have {6} {\neg \neg A} \ni{3-5}
+\have {7} {A} \nne{6}
+\have {8} {B} \by{$\to$E}{7, 1}
+\have {9} {\neg A \lor B} \oi{8}
+\have {10} {\bot} \ne{9, 2}
+\close
+\have {11} {\neg \neg (\neg A \lor B)} \ni{2-10}
+\have {12} {\neg A \lor B} \nne{11}
+\end{nd}$
+\section{$ \vdash \neg (A \land B) \to (\neg A \lor \neg B)$}
+ $\begin{nd}
+\open
+\hypo {1} {\neg (A \land B)} \by{Assumption}{}
+\open
+\hypo {2} {\neg (\neg A \lor \neg B)} \by{Assumption}{}
+\open
+\hypo {3} {\neg A} \by{Assumption}{}
+\have {4} {\neg A \lor \neg B} \oi{3}
+\have {5} {\bot} \ne{4, 2}
+\close
+\open
+\hypo {6} {\neg B} \by{Assumption}{}
+\have {7} {\neg A \lor \neg B} \oi{6}
+\have {8} {\bot} \ne{7, 2}
+\close
+\have {9} {\neg \neg A} \ni{3-5}
+\have {10} {A} \nne{9}
+\have {11} {\neg \neg B} \ni{6-8}
+\have {12} {B} \nne{11}
+\have {13} {A \land B} \ai{10, 12}
+\have {14} {\bot} \ne{13, 1}
+\close
+\have {15} {\neg \neg (\neg A \lor \neg B)} \ni{2-14}
+\have {16} {\neg A \lor \neg B} \nne{15}
+\close
+\have {17} {\neg (A \land B) \to (\neg A \lor \neg B)} \by{$\to$I}{1-16}
+\end{nd}$
+\section{$A \to (B \lor C) \vdash (A \to B) \lor (A \to C)$}
+ $\begin{nd}
+\hypo {1} {A \to (B \lor C)} \by{Premise}{}
+\open
+\hypo {2} {\neg ((A \to B) \lor (A \to C))} \by{Assumption}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\have {4} {B \lor C} \by{$\to$E}{3, 1}
+\open
+\hypo {5} {B} \by{Assumption}{}
+\open
+\hypo {6} {A} \by{Assumption}{}
+\have {7} {B} \r{5}
+\close
+\have {8} {A \to B} \by{$\to$I}{6-7}
+\have {9} {(A \to B) \lor (A \to C)} \oi{8}
+\close
+\open
+\hypo {10} {C} \by{Assumption}{}
+\open
+\hypo {11} {A} \by{Assumption}{}
+\have {12} {C} \r{10}
+\close
+\have {13} {A \to C} \by{$\to$I}{11-12}
+\have {14} {(A \to B) \lor (A \to C)} \oi{13}
+\close
+\have {15} {(A \to B) \lor (A \to C)} \oe{4, 5-9, 10-14}
+\have {16} {\bot} \ne{15, 2}
+\close
+\have {17} {\neg A} \ni{3-16}
+\open
+\hypo {18} {\neg A} \by{Assumption}{}
+\open
+\hypo {19} {A} \by{Assumption}{}
+\open
+\hypo {20} {\neg B} \by{Assumption}{}
+\have {21} {\bot} \ne{19, 18}
+\close
+\have {22} {\neg \neg B} \ni{20-21}
+\have {23} {B} \nne{22}
+\close
+\have {24} {A \to B} \by{$\to$I}{19-23}
+\have {25} {(A \to B) \lor (A \to C)} \oi{24}
+\have {26} {\bot} \ne{25, 2}
+\close
+\have {27} {\neg \neg A} \ni{18-26}
+\have {28} {\bot} \ne{17, 27}
+\close
+\have {29} {\neg \neg ((A \to B) \lor (A \to C))} \ni{2-28}
+\have {30} {(A \to B) \lor (A \to C)} \nne{29}
+\end{nd}$
+\section{$ \vdash (A \to B) \lor (B \to A)$}
+ $\begin{nd}
+\open
+\hypo {1} {\neg ((A \to B) \lor (B \to A))} \by{Assumption}{}
+\open
+\hypo {2} {A} \by{Assumption}{}
+\open
+\hypo {3} {B} \by{Assumption}{}
+\have {4} {A} \r{2}
+\close
+\have {5} {B \to A} \by{$\to$I}{3-4}
+\have {6} {(A \to B) \lor (B \to A)} \oi{5}
+\have {7} {\bot} \ne{6, 1}
+\close
+\open
+\hypo {8} {\neg A} \by{Assumption}{}
+\open
+\hypo {9} {A} \by{Assumption}{}
+\open
+\hypo {10} {\neg B} \by{Assumption}{}
+\have {11} {\bot} \ne{9, 8}
+\close
+\have {12} {\neg \neg B} \ni{10-11}
+\have {13} {B} \nne{12}
+\close
+\have {14} {A \to B} \by{$\to$I}{9-13}
+\have {15} {(A \to B) \lor (B \to A)} \oi{14}
+\have {16} {\bot} \ne{15, 1}
+\close
+\have {17} {\neg A} \ni{2-7}
+\have {18} {\neg \neg A} \ni{8-16}
+\have {19} {\bot} \ne{17, 18}
+\close
+\have {20} {\neg \neg ((A \to B) \lor (B \to A))} \ni{1-19}
+\have {21} {(A \to B) \lor (B \to A)} \nne{20}
+\end{nd}$
+\section{$ \vdash ((A \to B) \to A) \to A$}
+ $\begin{nd}
+\open
+\hypo {1} {(A \to B) \to A} \by{Assumption}{}
+\open
+\hypo {2} {\neg A} \by{Assumption}{}
+\open
+\hypo {3} {A} \by{Assumption}{}
+\open
+\hypo {4} {\neg B} \by{Assumption}{}
+\have {5} {\bot} \ne{3, 2}
+\close
+\have {6} {\neg \neg B} \ni{4-5}
+\have {7} {B} \nne{6}
+\close
+\have {8} {A \to B} \by{$\to$I}{3-7}
+\have {9} {A} \by{$\to$E}{8, 1}
+\have {10} {\bot} \ne{9, 2}
+\close
+\have {11} {\neg \neg A} \ni{2-10}
+\have {12} {A} \nne{11}
+\close
+\have {13} {((A \to B) \to A) \to A} \by{$\to$I}{1-12}
+\end{nd}$
+\end{document}

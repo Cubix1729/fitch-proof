@@ -1,0 +1,662 @@
+Proof of J → ¬J ⊢ ¬J successful
+
+1 │ J → ¬J                    Premise
+  ├─────────
+2 │  │ J                      Assumption
+  │  ├─────────
+3 │  │ ¬J                     →E 2, 1
+4 │  │ ⊥                      ¬E 2, 3
+5 │ ¬J                        ¬I 2-4
+
+
+
+
+Proof of Q → (Q ∧ ¬Q) ⊢ ¬Q successful
+
+1 │ Q → (Q ∧ ¬Q)              Premise
+  ├─────────
+2 │  │ Q                      Assumption
+  │  ├─────────
+3 │  │ Q ∧ ¬Q                 →E 2, 1
+4 │  │ ¬Q                     ∧E 3
+5 │  │ ⊥                      ¬E 2, 4
+6 │ ¬Q                        ¬I 2-5
+
+
+
+
+Proof of A → (B → C) ⊢ (A ∧ B) → C successful
+
+1 │ A → (B → C)               Premise
+  ├─────────
+2 │  │ A ∧ B                  Assumption
+  │  ├─────────
+3 │  │ A                      ∧E 2
+4 │  │ B                      ∧E 2
+5 │  │ B → C                  →E 3, 1
+6 │  │ C                      →E 5, 4
+7 │ (A ∧ B) → C               →I 2-6
+
+
+
+
+Proof of K ∧ L ⊢ K ↔ L successful
+
+1 │ K ∧ L                     Premise
+  ├─────────
+2 │  │ K                      Assumption
+  │  ├─────────
+3 │  │ L                      ∧E 1
+  │
+4 │  │ L                      Assumption
+  │  ├─────────
+5 │  │ K                      ∧E 1
+6 │ K ↔ L                     ↔I 2-3, 4-5
+
+
+
+
+Proof of (C ∧ D) ∨ E ⊢ E ∨ D successful
+
+1 │ (C ∧ D) ∨ E               Premise
+  ├─────────
+2 │  │ C ∧ D                  Assumption
+  │  ├─────────
+3 │  │ D                      ∧E 2
+4 │  │ E ∨ D                  ∨I 3
+  │
+5 │  │ E                      Assumption
+  │  ├─────────
+6 │  │ E ∨ D                  ∨I 5
+7 │ E ∨ D                     ∨E 1, 2-4, 5-6
+
+
+
+
+Proof of A ↔ B, B ↔ C ⊢ A ↔ C successful
+
+1 │ A ↔ B                     Premise
+2 │ B ↔ C                     Premise
+  ├─────────
+3 │  │ A                      Assumption
+  │  ├─────────
+4 │  │ B                      ↔E 3, 1
+5 │  │ C                      ↔E 4, 2
+  │
+6 │  │ C                      Assumption
+  │  ├─────────
+7 │  │ B                      ↔E 6, 2
+8 │  │ A                      ↔E 7, 1
+9 │ A ↔ C                     ↔I 3-5, 6-8
+
+
+
+
+Proof of ¬F → G, F → H ⊢ G ∨ H successful
+
+01 │ ¬F → G                   Premise
+02 │ F → H                    Premise
+   ├─────────
+03 │  │ ¬(G ∨ H)              Assumption
+   │  ├─────────
+04 │  │  │ F                  Assumption
+   │  │  ├─────────
+05 │  │  │ H                  →E 4, 2
+06 │  │  │ G ∨ H              ∨I 5
+07 │  │  │ ⊥                  ¬E 6, 3
+   │  │
+08 │  │  │ ¬F                 Assumption
+   │  │  ├─────────
+09 │  │  │ G                  →E 8, 1
+10 │  │  │ G ∨ H              ∨I 9
+11 │  │  │ ⊥                  ¬E 10, 3
+12 │  │ ¬F                    ¬I 4-7
+13 │  │ ¬¬F                   ¬I 8-11
+14 │  │ ⊥                     ¬E 12, 13
+15 │ ¬¬(G ∨ H)                ¬I 3-14
+16 │ G ∨ H                    ¬¬E 15
+
+
+
+
+Proof of (Z ∧ K) ∨ (K ∧ M), K → D ⊢ D successful
+
+1 │ (Z ∧ K) ∨ (K ∧ M)         Premise
+2 │ K → D                     Premise
+  ├─────────
+3 │  │ Z ∧ K                  Assumption
+  │  ├─────────
+4 │  │ K                      ∧E 3
+  │
+5 │  │ K ∧ M                  Assumption
+  │  ├─────────
+6 │  │ K                      ∧E 5
+7 │ K                         ∨E 1, 3-4, 5-6
+8 │ D                         →E 7, 2
+
+
+
+
+Proof of P ∧ (Q ∨ R), P → ¬R ⊢ Q ∨ E successful
+
+01 │ P ∧ (Q ∨ R)              Premise
+02 │ P → ¬R                   Premise
+   ├─────────
+03 │ P                        ∧E 1
+04 │ ¬R                       →E 3, 2
+05 │ Q ∨ R                    ∧E 1
+06 │  │ Q                     Assumption
+   │  ├─────────
+07 │  │ Q ∨ E                 ∨I 6
+   │
+08 │  │ R                     Assumption
+   │  ├─────────
+09 │  │  │ ¬Q                 Assumption
+   │  │  ├─────────
+10 │  │  │ ⊥                  ¬E 8, 4
+11 │  │ ¬¬Q                   ¬I 9-10
+12 │  │ Q                     ¬¬E 11
+13 │  │ Q ∨ E                 ∨I 12
+14 │ Q ∨ E                    ∨E 5, 6-7, 8-13
+
+
+
+
+Proof of S ↔ T ⊢ S ↔ (T ∨ S) successful
+
+01 │ S ↔ T                    Premise
+   ├─────────
+02 │  │ S                     Assumption
+   │  ├─────────
+03 │  │ T                     ↔E 2, 1
+04 │  │ T ∨ S                 ∨I 3
+   │
+05 │  │ T ∨ S                 Assumption
+   │  ├─────────
+06 │  │  │ T                  Assumption
+   │  │  ├─────────
+07 │  │  │ S                  ↔E 6, 1
+   │  │
+08 │  │  │ S                  Assumption
+   │  │  ├─────────
+09 │  │  │ S                  R 8
+10 │  │ S                     ∨E 5, 6-7, 8-9
+11 │ S ↔ (T ∨ S)              ↔I 2-4, 5-10
+
+
+
+
+Proof of ¬(P → Q) ⊢ ¬Q successful
+
+1 │ ¬(P → Q)                  Premise
+  ├─────────
+2 │  │ Q                      Assumption
+  │  ├─────────
+3 │  │  │ P                   Assumption
+  │  │  ├─────────
+4 │  │  │ Q                   R 2
+5 │  │ P → Q                  →I 3-4
+6 │  │ ⊥                      ¬E 5, 1
+7 │ ¬Q                        ¬I 2-6
+
+
+
+
+Proof of ¬(P → Q) ⊢ P successful
+
+01 │ ¬(P → Q)                 Premise
+   ├─────────
+02 │  │ ¬P                    Assumption
+   │  ├─────────
+03 │  │  │ P                  Assumption
+   │  │  ├─────────
+04 │  │  │  │ ¬Q              Assumption
+   │  │  │  ├─────────
+05 │  │  │  │ ⊥               ¬E 3, 2
+06 │  │  │ ¬¬Q                ¬I 4-5
+07 │  │  │ Q                  ¬¬E 6
+08 │  │ P → Q                 →I 3-7
+09 │  │ ⊥                     ¬E 8, 1
+10 │ ¬¬P                      ¬I 2-9
+11 │ P                        ¬¬E 10
+
+
+
+
+Proof of A → B, A → C ⊢ A → (B ∧ C) successful
+
+1 │ A → B                     Premise
+2 │ A → C                     Premise
+  ├─────────
+3 │  │ A                      Assumption
+  │  ├─────────
+4 │  │ B                      →E 3, 1
+5 │  │ C                      →E 3, 2
+6 │  │ B ∧ C                  ∧I 4, 5
+7 │ A → (B ∧ C)               →I 3-6
+
+
+
+
+Proof of (A ∧ B) → C ⊢ A → (B → C) successful
+
+1 │ (A ∧ B) → C               Premise
+  ├─────────
+2 │  │ A                      Assumption
+  │  ├─────────
+3 │  │  │ B                   Assumption
+  │  │  ├─────────
+4 │  │  │ A ∧ B               ∧I 2, 3
+5 │  │  │ C                   →E 4, 1
+6 │  │ B → C                  →I 3-5
+7 │ A → (B → C)               →I 2-6
+
+
+
+
+Proof of A → (B → C) ⊢ (A → B) → (A → C) successful
+
+1 │ A → (B → C)               Premise
+  ├─────────
+2 │  │ A → B                  Assumption
+  │  ├─────────
+3 │  │  │ A                   Assumption
+  │  │  ├─────────
+4 │  │  │ B                   →E 3, 2
+5 │  │  │ B → C               →E 3, 1
+6 │  │  │ C                   →E 4, 5
+7 │  │ A → C                  →I 3-6
+8 │ (A → B) → (A → C)         →I 2-7
+
+
+
+
+Proof of A ∨ (B ∧ C) ⊢ (A ∨ B) ∧ (A ∨ C) successful
+
+01 │ A ∨ (B ∧ C)              Premise
+   ├─────────
+02 │  │ A                     Assumption
+   │  ├─────────
+03 │  │ A ∨ B                 ∨I 2
+04 │  │ A ∨ C                 ∨I 2
+05 │  │ (A ∨ B) ∧ (A ∨ C)     ∧I 3, 4
+   │
+06 │  │ B ∧ C                 Assumption
+   │  ├─────────
+07 │  │ B                     ∧E 6
+08 │  │ C                     ∧E 6
+09 │  │ A ∨ B                 ∨I 7
+10 │  │ A ∨ C                 ∨I 8
+11 │  │ (A ∨ B) ∧ (A ∨ C)     ∧I 9, 10
+12 │ (A ∨ B) ∧ (A ∨ C)        ∨E 1, 2-5, 6-11
+
+
+
+
+Proof of (A ∧ B) ∨ (A ∧ C) ⊢ A ∧ (B ∨ C) successful
+
+01 │ (A ∧ B) ∨ (A ∧ C)        Premise
+   ├─────────
+02 │  │ A ∧ B                 Assumption
+   │  ├─────────
+03 │  │ A                     ∧E 2
+04 │  │ B                     ∧E 2
+05 │  │ B ∨ C                 ∨I 4
+06 │  │ A ∧ (B ∨ C)           ∧I 3, 5
+   │
+07 │  │ A ∧ C                 Assumption
+   │  ├─────────
+08 │  │ A                     ∧E 7
+09 │  │ C                     ∧E 7
+10 │  │ B ∨ C                 ∨I 9
+11 │  │ A ∧ (B ∨ C)           ∧I 8, 10
+12 │ A ∧ (B ∨ C)              ∨E 1, 2-6, 7-11
+
+
+
+
+Proof of A ∨ B, A → C, B → D ⊢ C ∨ D successful
+
+01 │ A ∨ B                    Premise
+02 │ A → C                    Premise
+03 │ B → D                    Premise
+   ├─────────
+04 │  │ A                     Assumption
+   │  ├─────────
+05 │  │ C                     →E 4, 2
+06 │  │ C ∨ D                 ∨I 5
+   │
+07 │  │ B                     Assumption
+   │  ├─────────
+08 │  │ D                     →E 7, 3
+09 │  │ C ∨ D                 ∨I 8
+10 │ C ∨ D                    ∨E 1, 4-6, 7-9
+
+
+
+
+Proof of ¬A ∨ ¬B ⊢ ¬(A ∧ B) successful
+
+01 │ ¬A ∨ ¬B                  Premise
+   ├─────────
+02 │  │ ¬A                    Assumption
+   │  ├─────────
+03 │  │  │ A ∧ B              Assumption
+   │  │  ├─────────
+04 │  │  │ A                  ∧E 3
+05 │  │  │ ⊥                  ¬E 4, 2
+06 │  │ ¬(A ∧ B)              ¬I 3-5
+   │
+07 │  │ ¬B                    Assumption
+   │  ├─────────
+08 │  │  │ A ∧ B              Assumption
+   │  │  ├─────────
+09 │  │  │ B                  ∧E 8
+10 │  │  │ ⊥                  ¬E 9, 7
+11 │  │ ¬(A ∧ B)              ¬I 8-10
+12 │ ¬(A ∧ B)                 ∨E 1, 2-6, 7-11
+
+
+
+
+Proof of A ∧ ¬B ⊢ ¬(A → B) successful
+
+1 │ A ∧ ¬B                    Premise
+  ├─────────
+2 │ A                         ∧E 1
+3 │ ¬B                        ∧E 1
+4 │  │ A → B                  Assumption
+  │  ├─────────
+5 │  │ B                      →E 2, 4
+6 │  │ ⊥                      ¬E 5, 3
+7 │ ¬(A → B)                  ¬I 4-6
+
+
+
+
+Proof of ⊢ ¬A → (A → ⊥) successful
+
+1 │  │ ¬A                     Assumption
+  │  ├─────────
+2 │  │  │ A                   Assumption
+  │  │  ├─────────
+3 │  │  │ ⊥                   ¬E 2, 1
+4 │  │ A → ⊥                  →I 2-3
+5 │ ¬A → (A → ⊥)              →I 1-4
+
+
+
+
+Proof of ⊢ ¬(A ∧ ¬A) successful
+
+1 │  │ A ∧ ¬A                 Assumption
+  │  ├─────────
+2 │  │ A                      ∧E 1
+3 │  │ ¬A                     ∧E 1
+4 │  │ ⊥                      ¬E 2, 3
+5 │ ¬(A ∧ ¬A)                 ¬I 1-4
+
+
+
+
+Proof of ⊢ ((A → C) ∧ (B → C)) → ((A ∨ B) → C) successful
+
+01 │  │ (A → C) ∧ (B → C)     Assumption
+   │  ├─────────
+02 │  │  │ A ∨ B              Assumption
+   │  │  ├─────────
+03 │  │  │  │ A               Assumption
+   │  │  │  ├─────────
+04 │  │  │  │ A → C           ∧E 1
+05 │  │  │  │ C               →E 3, 4
+   │  │  │
+06 │  │  │  │ B               Assumption
+   │  │  │  ├─────────
+07 │  │  │  │ B → C           ∧E 1
+08 │  │  │  │ C               →E 6, 7
+09 │  │  │ C                  ∨E 2, 3-5, 6-8
+10 │  │ (A ∨ B) → C           →I 2-9
+11 │ ((A → C) ∧ (B → C)) → ((A ∨ B) → C)→I 1-10
+
+
+
+
+Proof of ⊢ ¬(A → B) → (A ∧ ¬B) successful
+
+01 │  │ ¬(A → B)              Assumption
+   │  ├─────────
+02 │  │  │ ¬(A ∧ ¬B)          Assumption
+   │  │  ├─────────
+03 │  │  │  │ B               Assumption
+   │  │  │  ├─────────
+04 │  │  │  │  │ A            Assumption
+   │  │  │  │  ├─────────
+05 │  │  │  │  │ B            R 3
+06 │  │  │  │ A → B           →I 4-5
+07 │  │  │  │ ⊥               ¬E 6, 1
+08 │  │  │ ¬B                 ¬I 3-7
+09 │  │  │  │ ¬A              Assumption
+   │  │  │  ├─────────
+10 │  │  │  │  │ A            Assumption
+   │  │  │  │  ├─────────
+11 │  │  │  │  │  │ ¬B        Assumption
+   │  │  │  │  │  ├─────────
+12 │  │  │  │  │  │ ⊥         ¬E 10, 9
+13 │  │  │  │  │ ¬¬B          ¬I 11-12
+14 │  │  │  │  │ B            ¬¬E 13
+15 │  │  │  │ A → B           →I 10-14
+16 │  │  │  │ ⊥               ¬E 15, 1
+17 │  │  │ ¬¬A                ¬I 9-16
+18 │  │  │ A                  ¬¬E 17
+19 │  │  │ A ∧ ¬B             ∧I 18, 8
+20 │  │  │ ⊥                  ¬E 19, 2
+21 │  │ ¬¬(A ∧ ¬B)            ¬I 2-20
+22 │  │ A ∧ ¬B                ¬¬E 21
+23 │ ¬(A → B) → (A ∧ ¬B)      →I 1-22
+
+
+
+
+Proof of ⊢ (¬A ∨ B) → (A → B) successful
+
+01 │  │ ¬A ∨ B                Assumption
+   │  ├─────────
+02 │  │  │ ¬A                 Assumption
+   │  │  ├─────────
+03 │  │  │  │ A               Assumption
+   │  │  │  ├─────────
+04 │  │  │  │  │ ¬B           Assumption
+   │  │  │  │  ├─────────
+05 │  │  │  │  │ ⊥            ¬E 3, 2
+06 │  │  │  │ ¬¬B             ¬I 4-5
+07 │  │  │  │ B               ¬¬E 6
+08 │  │  │ A → B              →I 3-7
+   │  │
+09 │  │  │ B                  Assumption
+   │  │  ├─────────
+10 │  │  │  │ A               Assumption
+   │  │  │  ├─────────
+11 │  │  │  │ B               R 9
+12 │  │  │ A → B              →I 10-11
+13 │  │ A → B                 ∨E 1, 2-8, 9-12
+14 │ (¬A ∨ B) → (A → B)       →I 1-13
+
+
+
+
+Proof of ⊢ ¬¬A → A successful
+
+1 │  │ ¬¬A                    Assumption
+  │  ├─────────
+2 │  │ A                      ¬¬E 1
+3 │ ¬¬A → A                   →I 1-2
+
+
+
+
+Proof of ¬A → ¬B ⊢ B → A successful
+
+1 │ ¬A → ¬B                   Premise
+  ├─────────
+2 │  │ B                      Assumption
+  │  ├─────────
+3 │  │  │ ¬A                  Assumption
+  │  │  ├─────────
+4 │  │  │ ¬B                  →E 3, 1
+5 │  │  │ ⊥                   ¬E 2, 4
+6 │  │ ¬¬A                    ¬I 3-5
+7 │  │ A                      ¬¬E 6
+8 │ B → A                     →I 2-7
+
+
+
+
+Proof of A → B ⊢ ¬A ∨ B successful
+
+01 │ A → B                    Premise
+   ├─────────
+02 │  │ ¬(¬A ∨ B)             Assumption
+   │  ├─────────
+03 │  │  │ ¬A                 Assumption
+   │  │  ├─────────
+04 │  │  │ ¬A ∨ B             ∨I 3
+05 │  │  │ ⊥                  ¬E 4, 2
+06 │  │ ¬¬A                   ¬I 3-5
+07 │  │ A                     ¬¬E 6
+08 │  │ B                     →E 7, 1
+09 │  │ ¬A ∨ B                ∨I 8
+10 │  │ ⊥                     ¬E 9, 2
+11 │ ¬¬(¬A ∨ B)               ¬I 2-10
+12 │ ¬A ∨ B                   ¬¬E 11
+
+
+
+
+Proof of ⊢ ¬(A ∧ B) → (¬A ∨ ¬B) successful
+
+01 │  │ ¬(A ∧ B)              Assumption
+   │  ├─────────
+02 │  │  │ ¬(¬A ∨ ¬B)         Assumption
+   │  │  ├─────────
+03 │  │  │  │ ¬A              Assumption
+   │  │  │  ├─────────
+04 │  │  │  │ ¬A ∨ ¬B         ∨I 3
+05 │  │  │  │ ⊥               ¬E 4, 2
+   │  │  │
+06 │  │  │  │ ¬B              Assumption
+   │  │  │  ├─────────
+07 │  │  │  │ ¬A ∨ ¬B         ∨I 6
+08 │  │  │  │ ⊥               ¬E 7, 2
+09 │  │  │ ¬¬A                ¬I 3-5
+10 │  │  │ A                  ¬¬E 9
+11 │  │  │ ¬¬B                ¬I 6-8
+12 │  │  │ B                  ¬¬E 11
+13 │  │  │ A ∧ B              ∧I 10, 12
+14 │  │  │ ⊥                  ¬E 13, 1
+15 │  │ ¬¬(¬A ∨ ¬B)           ¬I 2-14
+16 │  │ ¬A ∨ ¬B               ¬¬E 15
+17 │ ¬(A ∧ B) → (¬A ∨ ¬B)     →I 1-16
+
+
+
+
+Proof of A → (B ∨ C) ⊢ (A → B) ∨ (A → C) successful
+
+01 │ A → (B ∨ C)              Premise
+   ├─────────
+02 │  │ ¬((A → B) ∨ (A → C))  Assumption
+   │  ├─────────
+03 │  │  │ A                  Assumption
+   │  │  ├─────────
+04 │  │  │ B ∨ C              →E 3, 1
+05 │  │  │  │ B               Assumption
+   │  │  │  ├─────────
+06 │  │  │  │  │ A            Assumption
+   │  │  │  │  ├─────────
+07 │  │  │  │  │ B            R 5
+08 │  │  │  │ A → B           →I 6-7
+09 │  │  │  │ (A → B) ∨ (A → C)∨I 8
+   │  │  │
+10 │  │  │  │ C               Assumption
+   │  │  │  ├─────────
+11 │  │  │  │  │ A            Assumption
+   │  │  │  │  ├─────────
+12 │  │  │  │  │ C            R 10
+13 │  │  │  │ A → C           →I 11-12
+14 │  │  │  │ (A → B) ∨ (A → C)∨I 13
+15 │  │  │ (A → B) ∨ (A → C)  ∨E 4, 5-9, 10-14
+16 │  │  │ ⊥                  ¬E 15, 2
+17 │  │ ¬A                    ¬I 3-16
+18 │  │  │ ¬A                 Assumption
+   │  │  ├─────────
+19 │  │  │  │ A               Assumption
+   │  │  │  ├─────────
+20 │  │  │  │  │ ¬B           Assumption
+   │  │  │  │  ├─────────
+21 │  │  │  │  │ ⊥            ¬E 19, 18
+22 │  │  │  │ ¬¬B             ¬I 20-21
+23 │  │  │  │ B               ¬¬E 22
+24 │  │  │ A → B              →I 19-23
+25 │  │  │ (A → B) ∨ (A → C)  ∨I 24
+26 │  │  │ ⊥                  ¬E 25, 2
+27 │  │ ¬¬A                   ¬I 18-26
+28 │  │ ⊥                     ¬E 17, 27
+29 │ ¬¬((A → B) ∨ (A → C))    ¬I 2-28
+30 │ (A → B) ∨ (A → C)        ¬¬E 29
+
+
+
+
+Proof of ⊢ (A → B) ∨ (B → A) successful
+
+01 │  │ ¬((A → B) ∨ (B → A))  Assumption
+   │  ├─────────
+02 │  │  │ A                  Assumption
+   │  │  ├─────────
+03 │  │  │  │ B               Assumption
+   │  │  │  ├─────────
+04 │  │  │  │ A               R 2
+05 │  │  │ B → A              →I 3-4
+06 │  │  │ (A → B) ∨ (B → A)  ∨I 5
+07 │  │  │ ⊥                  ¬E 6, 1
+   │  │
+08 │  │  │ ¬A                 Assumption
+   │  │  ├─────────
+09 │  │  │  │ A               Assumption
+   │  │  │  ├─────────
+10 │  │  │  │  │ ¬B           Assumption
+   │  │  │  │  ├─────────
+11 │  │  │  │  │ ⊥            ¬E 9, 8
+12 │  │  │  │ ¬¬B             ¬I 10-11
+13 │  │  │  │ B               ¬¬E 12
+14 │  │  │ A → B              →I 9-13
+15 │  │  │ (A → B) ∨ (B → A)  ∨I 14
+16 │  │  │ ⊥                  ¬E 15, 1
+17 │  │ ¬A                    ¬I 2-7
+18 │  │ ¬¬A                   ¬I 8-16
+19 │  │ ⊥                     ¬E 17, 18
+20 │ ¬¬((A → B) ∨ (B → A))    ¬I 1-19
+21 │ (A → B) ∨ (B → A)        ¬¬E 20
+
+
+
+
+Proof of ⊢ ((A → B) → A) → A successful
+
+01 │  │ (A → B) → A           Assumption
+   │  ├─────────
+02 │  │  │ ¬A                 Assumption
+   │  │  ├─────────
+03 │  │  │  │ A               Assumption
+   │  │  │  ├─────────
+04 │  │  │  │  │ ¬B           Assumption
+   │  │  │  │  ├─────────
+05 │  │  │  │  │ ⊥            ¬E 3, 2
+06 │  │  │  │ ¬¬B             ¬I 4-5
+07 │  │  │  │ B               ¬¬E 6
+08 │  │  │ A → B              →I 3-7
+09 │  │  │ A                  →E 8, 1
+10 │  │  │ ⊥                  ¬E 9, 2
+11 │  │ ¬¬A                   ¬I 2-10
+12 │  │ A                     ¬¬E 11
+13 │ ((A → B) → A) → A        →I 1-12
