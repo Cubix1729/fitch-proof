@@ -3,6 +3,7 @@
 
 Fitch is a simple language for making propositional proofs in a Fitch-style natural deduction system.
 The interpreter parses the proofs, renders them as text, and optionally generates a LaTex document.
+You can find over 40 example proofs in total in the examples folder.
 
 
 ## Usage
