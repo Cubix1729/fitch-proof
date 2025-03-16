@@ -230,7 +230,7 @@ class Proof:
         return result
 
     def latex(self) -> str:
-        result = r"$\begin{nd}" + "\n"
+        result = r"\begin{nd}" + "\n"
         for index, proof_line in enumerate(self.steps):
             line_number = index + 1
             current_proof_depth = proof_line.subproof_depth
@@ -254,6 +254,6 @@ class Proof:
                 ):
                     result += r"\close" + "\n"
 
-        result += r"\end{nd}$"
+        result += r"\end{nd}"
 
         return result

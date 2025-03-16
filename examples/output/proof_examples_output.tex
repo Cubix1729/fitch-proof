@@ -5,7 +5,7 @@
 \begin{document}
 \tableofcontents
 \section{$J \to \neg J \vdash \neg J$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {J \to \neg J} \by{Premise}{}
 \open
 \hypo {2} {J} \by{Assumption}{}
@@ -15,7 +15,7 @@
 \have {5} {\neg J} \ni{2-4}
 \end{nd}$
 \section{$Q \to (Q \land \neg Q) \vdash \neg Q$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {Q \to (Q \land \neg Q)} \by{Premise}{}
 \open
 \hypo {2} {Q} \by{Assumption}{}
@@ -26,7 +26,7 @@
 \have {6} {\neg Q} \ni{2-5}
 \end{nd}$
 \section{$A \to (B \to C) \vdash (A \land B) \to C$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \to (B \to C)} \by{Premise}{}
 \open
 \hypo {2} {A \land B} \by{Assumption}{}
@@ -38,7 +38,7 @@
 \have {7} {(A \land B) \to C} \by{$\to$I}{2-6}
 \end{nd}$
 \section{$K \land L \vdash K \leftrightarrow L$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {K \land L} \by{Premise}{}
 \open
 \hypo {2} {K} \by{Assumption}{}
@@ -51,7 +51,7 @@
 \have {6} {K \leftrightarrow L} \by{$\leftrightarrow$I}{2-3, 4-5}
 \end{nd}$
 \section{$(C \land D) \lor E \vdash E \lor D$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {(C \land D) \lor E} \by{Premise}{}
 \open
 \hypo {2} {C \land D} \by{Assumption}{}
@@ -65,7 +65,7 @@
 \have {7} {E \lor D} \oe{1, 2-4, 5-6}
 \end{nd}$
 \section{$A \leftrightarrow B, B \leftrightarrow C \vdash A \leftrightarrow C$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \leftrightarrow B} \by{Premise}{}
 \hypo {2} {B \leftrightarrow C} \by{Premise}{}
 \open
@@ -81,7 +81,7 @@
 \have {9} {A \leftrightarrow C} \by{$\leftrightarrow$I}{3-5, 6-8}
 \end{nd}$
 \section{$\neg F \to G, F \to H \vdash G \lor H$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {\neg F \to G} \by{Premise}{}
 \hypo {2} {F \to H} \by{Premise}{}
 \open
@@ -106,7 +106,7 @@
 \have {16} {G \lor H} \nne{15}
 \end{nd}$
 \section{$(Z \land K) \lor (K \land M), K \to D \vdash D$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {(Z \land K) \lor (K \land M)} \by{Premise}{}
 \hypo {2} {K \to D} \by{Premise}{}
 \open
@@ -121,7 +121,7 @@
 \have {8} {D} \by{$\to$E}{7, 2}
 \end{nd}$
 \section{$P \land (Q \lor R), P \to \neg R \vdash Q \lor E$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {P \land (Q \lor R)} \by{Premise}{}
 \hypo {2} {P \to \neg R} \by{Premise}{}
 \have {3} {P} \ae{1}
@@ -144,7 +144,7 @@
 \have {14} {Q \lor E} \oe{5, 6-7, 8-13}
 \end{nd}$
 \section{$S \leftrightarrow T \vdash S \leftrightarrow (T \lor S)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {S \leftrightarrow T} \by{Premise}{}
 \open
 \hypo {2} {S} \by{Assumption}{}
@@ -166,7 +166,7 @@
 \have {11} {S \leftrightarrow (T \lor S)} \by{$\leftrightarrow$I}{2-4, 5-10}
 \end{nd}$
 \section{$\neg (P \to Q) \vdash \neg Q$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {\neg (P \to Q)} \by{Premise}{}
 \open
 \hypo {2} {Q} \by{Assumption}{}
@@ -180,7 +180,7 @@
 \have {7} {\neg Q} \ni{2-6}
 \end{nd}$
 \section{$\neg (P \to Q) \vdash P$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {\neg (P \to Q)} \by{Premise}{}
 \open
 \hypo {2} {\neg P} \by{Assumption}{}
@@ -200,7 +200,7 @@
 \have {11} {P} \nne{10}
 \end{nd}$
 \section{$A \to B, A \to C \vdash A \to (B \land C)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \to B} \by{Premise}{}
 \hypo {2} {A \to C} \by{Premise}{}
 \open
@@ -212,7 +212,7 @@
 \have {7} {A \to (B \land C)} \by{$\to$I}{3-6}
 \end{nd}$
 \section{$(A \land B) \to C \vdash A \to (B \to C)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {(A \land B) \to C} \by{Premise}{}
 \open
 \hypo {2} {A} \by{Assumption}{}
@@ -226,7 +226,7 @@
 \have {7} {A \to (B \to C)} \by{$\to$I}{2-6}
 \end{nd}$
 \section{$A \to (B \to C) \vdash (A \to B) \to (A \to C)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \to (B \to C)} \by{Premise}{}
 \open
 \hypo {2} {A \to B} \by{Assumption}{}
@@ -241,7 +241,7 @@
 \have {8} {(A \to B) \to (A \to C)} \by{$\to$I}{2-7}
 \end{nd}$
 \section{$A \lor (B \land C) \vdash (A \lor B) \land (A \lor C)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \lor (B \land C)} \by{Premise}{}
 \open
 \hypo {2} {A} \by{Assumption}{}
@@ -260,7 +260,7 @@
 \have {12} {(A \lor B) \land (A \lor C)} \oe{1, 2-5, 6-11}
 \end{nd}$
 \section{$(A \land B) \lor (A \land C) \vdash A \land (B \lor C)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {(A \land B) \lor (A \land C)} \by{Premise}{}
 \open
 \hypo {2} {A \land B} \by{Assumption}{}
@@ -279,7 +279,7 @@
 \have {12} {A \land (B \lor C)} \oe{1, 2-6, 7-11}
 \end{nd}$
 \section{$A \lor B, A \to C, B \to D \vdash C \lor D$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \lor B} \by{Premise}{}
 \hypo {2} {A \to C} \by{Premise}{}
 \hypo {3} {B \to D} \by{Premise}{}
@@ -296,7 +296,7 @@
 \have {10} {C \lor D} \oe{1, 4-6, 7-9}
 \end{nd}$
 \section{$\neg A \lor \neg B \vdash \neg (A \land B)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {\neg A \lor \neg B} \by{Premise}{}
 \open
 \hypo {2} {\neg A} \by{Assumption}{}
@@ -319,7 +319,7 @@
 \have {12} {\neg (A \land B)} \oe{1, 2-6, 7-11}
 \end{nd}$
 \section{$A \land \neg B \vdash \neg (A \to B)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \land \neg B} \by{Premise}{}
 \have {2} {A} \ae{1}
 \have {3} {\neg B} \ae{1}
@@ -331,7 +331,7 @@
 \have {7} {\neg (A \to B)} \ni{4-6}
 \end{nd}$
 \section{$ \vdash \neg A \to (A \to \bot)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {\neg A} \by{Assumption}{}
 \open
@@ -343,7 +343,7 @@
 \have {5} {\neg A \to (A \to \bot)} \by{$\to$I}{1-4}
 \end{nd}$
 \section{$ \vdash \neg (A \land \neg A)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {A \land \neg A} \by{Assumption}{}
 \have {2} {A} \ae{1}
@@ -353,7 +353,7 @@
 \have {5} {\neg (A \land \neg A)} \ni{1-4}
 \end{nd}$
 \section{$ \vdash ((A \to C) \land (B \to C)) \to ((A \lor B) \to C)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {(A \to C) \land (B \to C)} \by{Assumption}{}
 \open
@@ -375,7 +375,7 @@
 \have {11} {((A \to C) \land (B \to C)) \to ((A \lor B) \to C)} \by{$\to$I}{1-10}
 \end{nd}$
 \section{$ \vdash \neg (A \to B) \to (A \land \neg B)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {\neg (A \to B)} \by{Assumption}{}
 \open
@@ -415,7 +415,7 @@
 \have {23} {\neg (A \to B) \to (A \land \neg B)} \by{$\to$I}{1-22}
 \end{nd}$
 \section{$ \vdash (\neg A \lor B) \to (A \to B)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {\neg A \lor B} \by{Assumption}{}
 \open
@@ -444,7 +444,7 @@
 \have {14} {(\neg A \lor B) \to (A \to B)} \by{$\to$I}{1-13}
 \end{nd}$
 \section{$ \vdash \neg \neg A \to A$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {\neg \neg A} \by{Assumption}{}
 \have {2} {A} \nne{1}
@@ -452,7 +452,7 @@
 \have {3} {\neg \neg A \to A} \by{$\to$I}{1-2}
 \end{nd}$
 \section{$\neg A \to \neg B \vdash B \to A$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {\neg A \to \neg B} \by{Premise}{}
 \open
 \hypo {2} {B} \by{Assumption}{}
@@ -467,7 +467,7 @@
 \have {8} {B \to A} \by{$\to$I}{2-7}
 \end{nd}$
 \section{$A \to B \vdash \neg A \lor B$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \to B} \by{Premise}{}
 \open
 \hypo {2} {\neg (\neg A \lor B)} \by{Assumption}{}
@@ -486,7 +486,7 @@
 \have {12} {\neg A \lor B} \nne{11}
 \end{nd}$
 \section{$ \vdash \neg (A \land B) \to (\neg A \lor \neg B)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {\neg (A \land B)} \by{Assumption}{}
 \open
@@ -514,7 +514,7 @@
 \have {17} {\neg (A \land B) \to (\neg A \lor \neg B)} \by{$\to$I}{1-16}
 \end{nd}$
 \section{$A \to (B \lor C) \vdash (A \to B) \lor (A \to C)$}
- $\begin{nd}
+$\begin{nd}
 \hypo {1} {A \to (B \lor C)} \by{Premise}{}
 \open
 \hypo {2} {\neg ((A \to B) \lor (A \to C))} \by{Assumption}{}
@@ -565,7 +565,7 @@
 \have {30} {(A \to B) \lor (A \to C)} \nne{29}
 \end{nd}$
 \section{$ \vdash (A \to B) \lor (B \to A)$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {\neg ((A \to B) \lor (B \to A))} \by{Assumption}{}
 \open
@@ -601,7 +601,7 @@
 \have {21} {(A \to B) \lor (B \to A)} \nne{20}
 \end{nd}$
 \section{$ \vdash ((A \to B) \to A) \to A$}
- $\begin{nd}
+$\begin{nd}
 \open
 \hypo {1} {(A \to B) \to A} \by{Assumption}{}
 \open
