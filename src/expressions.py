@@ -243,7 +243,7 @@ class Inference:
 
     def __str__(self) -> str:
         if len(self.premises) != 0:
-            return f"{", ".join([str(premise) for premise in self.premises])} ⊢ {self.conclusion}"
+            return "{} ⊢ {}".format(", ".join([str(premise) for premise in self.premises]), self.conclusion)
         else:
             return f"⊢ {self.conclusion}"
 

@@ -51,7 +51,7 @@ class FitchInterpreter:
         self.proofs_list = []
         self.all_proved_inferences = []
 
-    def interpret_code(self) -> Generator[str]:
+    def interpret_code(self) -> Generator[str, None, None]:
         with open(self.file_name, "r") as file:
             file_content = file.read()
 
@@ -106,7 +106,7 @@ class FitchInterpreter:
                 if index < len(proof_split) - 2:  # we do not display blank lines at the end of the output
                     yield "\n\n"
 
-    def interpret_proof(self, proof_str: str) -> Generator[str]:
+    def interpret_proof(self, proof_str: str) -> Generator[str, None, None]:
         proof_lines = proof_str.splitlines()
         first_line = proof_lines[0]
 
