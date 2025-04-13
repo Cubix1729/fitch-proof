@@ -7,7 +7,12 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("filename", help="the path to the file containing the proofs to interpret")
 
-parser.add_argument("-l", "--latex", help="write a LaTex document with all the proofs, using the 'fitch' package")
+parser.add_argument(
+    "-l",
+    "--latex",
+    help="write a LaTex document with all the proofs to the file path given",
+    metavar="filename",
+)
 
 parser.add_argument(
     "-v",

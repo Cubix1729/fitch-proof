@@ -214,9 +214,7 @@ class FitchInterpreter:
 """
         for proof_made in self.proofs_list:
             latex_document += rf"\section{{${proof_made.goal.latex()}$}}" + "\n"
-            latex_document += (
-                "$" + proof_made.latex() + "$\n"
-            )
+            latex_document += "$" + proof_made.latex() + "$\n"
 
         latex_document += r"\end{document}"
         return latex_document
