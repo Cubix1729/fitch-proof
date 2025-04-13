@@ -57,7 +57,8 @@ Comments are written after a `%` sign.
 
 The Fitch langage uses significant indentation. Between two lines:
  - Increasing the indentation means increasing the subproof level, i.e. starting a new subproof
- - Decreasing the indentation means decreasing the subproof level, i.e. discharging an assumption
+ - Decreasing the indentation means decreasing the subproof level, i.e. discharging an assumption.
+ 
 If an assumption is encountered while the indentation is the same as the previous line, the previous assumption will be discharged before taking the line into account.
 
 Here is an example proof of $(A \land B) \lor (A \land C) \vdash A$:

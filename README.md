@@ -4,6 +4,16 @@ Fitch is a simple language for making propositional proofs in a Fitch-style natu
 The interpreter parses the proofs, renders them as text, and optionally generates a LaTex document.
 You can find over 40 example proofs in total in the examples folder.
 
+## Installation
+
+```
+git clone https://github.com/Cubix1729/fitch-proof.git
+cd fitch-proof
+pip install -r requirements.txt
+```
+
+The project needs a Python version >=3.10.
+
 ## Usage
 
 See the detailed langage explanation in the [documentation](./docs/syntax.md).
@@ -28,5 +38,6 @@ options:
 
  - `lark` for parsing logical expression and Fitch-style rules
 
-The code was formatted using `black`, with line length 120.
-The generated LaTex output uses the `fitch` package, available on [CTAN](https://ctan.org/pkg/fitch).
+The code is formatted using `black`, with line length 120.
+
+The optionally generated LaTex outputs use the `fitch` package, available on [CTAN](https://ctan.org/pkg/fitch).
