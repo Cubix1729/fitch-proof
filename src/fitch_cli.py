@@ -10,7 +10,7 @@ parser.add_argument("filename", help="the path to the file containing the proofs
 parser.add_argument(
     "-l",
     "--latex",
-    help="write a LaTex document with all the proofs to the file path given",
+    help="write a LaTeX document with all the proofs to the file path given",
     metavar="filename",
 )
 
